@@ -16,12 +16,8 @@
     border-radius: 50%;
     background-color: rgba(0,0,0,0.1);
 
-    @include pulsate(
-      $animation-name: "focus-ripple-pulsate",
-      $start-size: 0.75,
-      $end-size: 0.85
-    );
 
+@include pulsate-animation-name('focus-ripple-pulsate');
   }
 
   &.mui-is-shown {
@@ -29,3 +25,8 @@
     opacity: 1;
   }
 }
+    @include pulsate(
+      $animation-name: "focus-ripple-pulsate",
+      $start-size: 0.75,
+      $end-size: 0.85
+    );

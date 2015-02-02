@@ -56,7 +56,8 @@
 
     .mui-ripple {
       &.mui-show {
-        @include ripple-click-alt("menu-item-ripple-animation", darken($white, 20%), 250px);
+        @include ripple-click-alt("menu-item-ripple-animation");
+
       }
     }
 
@@ -89,7 +90,7 @@
       vertical-align: top;
       top: -12px;
       position: relative;
-      @extend %mui-font-weight-light;
+      @extend .mui-font-weight-light;
     }
 
     .mui-icon-arrow-drop-right {
@@ -117,3 +118,4 @@
     }
   }
 }
+@include ripple-click-alt-animation("menu-item-ripple-animation", darken($white, 20%), 250px);

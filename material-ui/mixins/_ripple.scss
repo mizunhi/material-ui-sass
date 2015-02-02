@@ -1,32 +1,43 @@
+/*
+ * @author: mizunhi
+ * @description: created new mixins to avoid the creation of the keyframes nested into the classes
+ */
 
-
-@mixin ripple-click($animation-name, $color, $size: 150px, $duration: 0.7s) {
+@mixin ripple-click($animation-name, $size: 150px, $duration: 0.7s) {
   height: $size;
   width: $size;
   margin-top: (-1 * $size / 2);
   margin-left: (-1 * $size / 2);
+
+  animation: $animation-name $duration;
+}
+@mixin  ripple-click-animation($animation-name, $color){
 
   @keyframes #{$animation-name} {
     0% { transform: scale(0); background-color: $transparent; }
     50% { background-color: $color; }
     100% { transform: scale(1); background-color: $transparent; }
   }
-  animation: $animation-name $duration;
 }
 
 // Animating using scale transforms causes ripple to ignore border radius 
 // overflow hidden so animate using width instead
-@mixin ripple-click-alt($animation-name, $color, $size: 150px, $duration: 0.7s) {
+@mixin ripple-click-alt($animation-name,  $duration: 0.7s) {
+
+
+  animation: $animation-name $duration;
+
+}
+@mixin ripple-click-alt-animation($animation-name, $color, $size: 150px){
 
   @keyframes #{$animation-name} {
     0% {background-color: $transparent; }
     50% { background-color: $color; }
     100% { width: $size; height: $size; background-color: $transparent; }
   }
-  animation: $animation-name $duration;
-
 }
 
+/*
 @mixin ripple-button-focus() {
   $top-offset: ($button-height / 2);
   margin-top: calc('-50% + $top-offset');
@@ -37,9 +48,10 @@
   padding-bottom: 100%;
   padding-top: ($desktop-gutter-less * 2);
 
+  @include pulsate-animation-name("ripple-button-focus");
   @include pulsate(
     $animation-name: "ripple-button-focus",
     $start-size: 0.75,
     $end-size: 0.85
   );
-}
+}*/
